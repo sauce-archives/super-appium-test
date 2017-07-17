@@ -16,7 +16,7 @@ properties([
         booleanParam(defaultValue: false, description: '', name: 'TESTOBJECT_PHONE_ONLY'),
         booleanParam(defaultValue: false, description: '', name: 'TESTOBJECT_TABLET_ONLY'),
         booleanParam(defaultValue: false, description: '', name: 'TESTOBJECT_CACHE_DEVICE'),
-        choice(choices: ['https://appium.staging.testobject.org/wd/hub', 'https://appium.dev.testobject.org/wd/hub', 'https://us1.appium.testobject.com/wd/hub', 'https://eu1.appium.testobject.com/wd/hub'], description: 'REQUIRED', name: 'APPIUM_URL')
+        choice(choices: 'https://appium.staging.testobject.org/wd/hub\nhttps://appium.dev.testobject.org/wd/hub\nhttps://us1.appium.testobject.com/wd/hub\nhttps://eu1.appium.testobject.com/wd/hub', description: 'REQUIRED', name: 'APPIUM_URL')
     ])
 ])
 
