@@ -1,20 +1,26 @@
 package org.testobject.appium.supertest;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testobject.rest.api.appium.common.TestObjectCapabilities;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 
 public class SuperTest {
+	private static final Logger log = LoggerFactory.getLogger(SuperTest.class);
+
 	private DesiredCapabilities capabilities = new DesiredCapabilities();
 	private RemoteWebDriver driver;
 
@@ -35,7 +41,11 @@ public class SuperTest {
 
 		setRequiredCapability(TestObjectCapabilities.TESTOBJECT_API_KEY);
 
+		log.info("Initializing driver with DesiredCapabilities:\n" + capabilities);
 		driver = new RemoteWebDriver(getAppiumServer(), capabilities);
+		log.info("Driver initialized.");
+		log.info(capabilities.getCapability(TestObjectCapabilities.TESTOBJECT_TEST_LIVE_VIEW_URL).toString());
+		log.info(capabilities.getCapability(TestObjectCapabilities.TESTOBJECT_TEST_REPORT_URL).toString());
 	}
 
 	private void setRequiredCapability(String var) {
@@ -68,8 +78,19 @@ public class SuperTest {
 
 	@Test
     public void superTest() throws IOException {
-		System.out.println(driver.getPageSource());
+		log.info(driver.getPageSource());
 		byte[] screenshot = driver.getScreenshotAs(OutputType.BYTES);
-		Files.write(Paths.get("screenshot.png"), screenshot);
+		Path screenshotPath = Paths.get("screenshot.png");
+		Files.write(screenshotPath, screenshot);
+		log.info("Screenshot saved to " + screenshotPath);
+	}
+
+	@After
+	public void tearDown() {
+		log.info("Test complete.");
+		if (driver != null) {
+			driver.quit();
+			log.info("Ended session.");
+		}
 	}
 }
