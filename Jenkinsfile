@@ -17,12 +17,13 @@ properties([
         booleanParam(defaultValue: false, description: '', name: 'TESTOBJECT_TABLET_ONLY'),
         booleanParam(defaultValue: false, description: '', name: 'TESTOBJECT_CACHE_DEVICE'),
         choice(choices: 'https://appium.staging.testobject.org/wd/hub\nhttps://appium.dev.testobject.org/wd/hub\nhttps://us1.appium.testobject.com/wd/hub\nhttps://eu1.appium.testobject.com/wd/hub', description: 'REQUIRED', name: 'APPIUM_URL')
+        choice(choices: 'RemoteWebDriver\nIOSDriver\nAndroidDriver', description: 'REQUIRED', name: 'DRIVER')
     ])
 ])
 
 TestRunner {
     steps = {
-        sh "./gradlew test"
+        sh "./gradlew test -i"
         archiveArtifacts "screenshot.png"
     }
 }

@@ -1,5 +1,7 @@
 package org.testobject.appium.supertest;
 
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,8 +44,25 @@ public class SuperTest {
 		setRequiredCapability(TestObjectCapabilities.TESTOBJECT_API_KEY);
 
 		log.info("Initializing driver with DesiredCapabilities:\n" + capabilities);
-		driver = new RemoteWebDriver(getAppiumServer(), capabilities);
+		driver = initDriver();
 		log.info("Driver initialized. Returned capabilities:\n" + driver.getCapabilities());
+	}
+
+	private RemoteWebDriver initDriver() {
+		String driver = System.getenv("DRIVER");
+		if (driver == null || driver.isEmpty()) {
+			throw new RuntimeException("Missing required environment variable: DRIVER");
+		}
+		switch (driver.toLowerCase()) {
+		case "iosdriver":
+			return new IOSDriver<>(getAppiumServer(), capabilities);
+		case "androiddriver":
+			return new AndroidDriver<>(getAppiumServer(), capabilities);
+		case "remotewebdriver":
+			return new RemoteWebDriver(getAppiumServer(), capabilities);
+		default:
+			throw new RuntimeException("Unrecognized DRIVER variable: " + driver);
+		}
 	}
 
 	private void setRequiredCapability(String var) {
@@ -75,7 +94,8 @@ public class SuperTest {
 	}
 
 	@Test
-    public void superTest() throws IOException {
+    public void superTest() throws IOException, InterruptedException {
+		Thread.sleep(1000);
 		log.info(driver.getPageSource());
 		byte[] screenshot = driver.getScreenshotAs(OutputType.BYTES);
 		Path screenshotPath = Paths.get("screenshot.png");
