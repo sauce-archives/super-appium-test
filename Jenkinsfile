@@ -3,7 +3,7 @@
 properties([
     parameters([
         string(defaultValue: '', description: 'REQUIRED', name: 'TESTOBJECT_API_KEY'),
-        string(defaultValue: '', description: '', name: 'TESTOBJECT_TEST_NAME'),
+        string(defaultValue: 'Super Test!', description: '', name: 'TESTOBJECT_TEST_NAME'),
         string(defaultValue: '', description: '', name: 'TESTOBJECT_DEVICE'),
         string(defaultValue: '', description: '', name: 'TESTOBJECT_PLATFORM_NAME'),
         string(defaultValue: '', description: '', name: 'TESTOBJECT_PLATFORM_VERSION'),
