@@ -25,9 +25,9 @@ properties([
 ])
 
 TestRunner {
-    dockerImage = "java:8"
     steps = {
         sh "./gradlew test -i"
         archiveArtifacts "screenshot.png"
     }
+    dockerImage = "java:8"
 }
