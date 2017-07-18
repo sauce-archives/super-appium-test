@@ -43,9 +43,7 @@ public class SuperTest {
 
 		log.info("Initializing driver with DesiredCapabilities:\n" + capabilities);
 		driver = new RemoteWebDriver(getAppiumServer(), capabilities);
-		log.info("Driver initialized.");
-		log.info(capabilities.getCapability(TestObjectCapabilities.TESTOBJECT_TEST_LIVE_VIEW_URL).toString());
-		log.info(capabilities.getCapability(TestObjectCapabilities.TESTOBJECT_TEST_REPORT_URL).toString());
+		log.info("Driver initialized. Returned capabilities:\n" + driver.getCapabilities());
 	}
 
 	private void setRequiredCapability(String var) {
