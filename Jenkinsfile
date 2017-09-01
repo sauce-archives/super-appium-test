@@ -9,7 +9,6 @@ properties([
         string(defaultValue: '', description: '', name: 'TESTOBJECT_DEVICE'),
         string(defaultValue: '', description: '', name: 'TESTOBJECT_PLATFORM_NAME'),
         string(defaultValue: '', description: '', name: 'TESTOBJECT_PLATFORM_VERSION'),
-        string(defaultValue: '', description: '', name: 'TESTOBJECT_PHONE_ONLY'),
         string(defaultValue: '', description: '', name: 'TESTOBJECT_POOL_ID'),
         string(defaultValue: '', description: '', name: 'TESTOBJECT_APPIUM_VERSION'),
         string(defaultValue: '', description: '', name: 'TESTOBJECT_APP_ID'),
