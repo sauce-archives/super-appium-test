@@ -15,6 +15,7 @@ properties([
         string(defaultValue: '', description: '', name: 'TESTOBJECT_APP_ID'),
         string(defaultValue: '', description: '', name: 'TESTOBJECT_SESSION_CREATION_RETRY'),
         string(defaultValue: '', description: '', name: 'TESTOBJECT_SESSION_CREATION_TIMEOUT'),
+        string(defaultValue: '', description: '', name: 'AUTOMATIONNAME'),
         booleanParam(defaultValue: false, description: '', name: 'TESTOBJECT_PHONE_ONLY'),
         booleanParam(defaultValue: false, description: '', name: 'TESTOBJECT_TABLET_ONLY'),
         booleanParam(defaultValue: false, description: '', name: 'TESTOBJECT_CACHE_DEVICE'),

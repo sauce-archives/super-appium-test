@@ -40,12 +40,13 @@ public class SuperTest {
 		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_APP_ID);
 		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_SESSION_CREATION_RETRY);
 		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_SESSION_CREATION_TIMEOUT);
+		setOptionalCapability("automationName");
 
 		setRequiredCapability(TestObjectCapabilities.TESTOBJECT_API_KEY);
 
-		log.info("Initializing driver with DesiredCapabilities:\n" + capabilities);
+		log.info("Initializing driver with DesiredCapabilities:\n" + capabilities + "\n");
 		driver = initDriver();
-		log.info("Driver initialized. Returned capabilities:\n" + driver.getCapabilities());
+		log.info("Driver initialized. Returned capabilities:\n" + driver.getCapabilities() + "\n");
 	}
 
 	private RemoteWebDriver initDriver() {
