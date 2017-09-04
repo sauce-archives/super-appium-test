@@ -19,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
+import java.util.UUID;
 
 public class SuperTest {
 	private static final Logger log = LoggerFactory.getLogger(SuperTest.class);
@@ -43,6 +44,7 @@ public class SuperTest {
 		setOptionalCapability("automationName");
 
 		setRequiredCapability(TestObjectCapabilities.TESTOBJECT_API_KEY);
+		capabilities.setCapability("TESTOBJECT_UUID", UUID.randomUUID().toString());
 
 		log.info("Initializing driver with DesiredCapabilities:\n" + capabilities + "\n");
 		driver = initDriver();
