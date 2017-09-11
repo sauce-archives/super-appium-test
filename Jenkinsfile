@@ -15,12 +15,14 @@ properties([
         string(defaultValue: '', description: '', name: 'TESTOBJECT_SESSION_CREATION_RETRY'),
         string(defaultValue: '', description: '', name: 'TESTOBJECT_SESSION_CREATION_TIMEOUT'),
         string(defaultValue: '', description: '', name: 'AUTOMATIONNAME'),
+        string(defaultValue: '', description: '', name: 'TUNNELID'),
         booleanParam(defaultValue: false, description: '', name: 'TESTOBJECT_PHONE_ONLY'),
         booleanParam(defaultValue: false, description: '', name: 'TESTOBJECT_TABLET_ONLY'),
         booleanParam(defaultValue: false, description: '', name: 'TESTOBJECT_CACHE_DEVICE'),
         booleanParam(defaultValue: false, description: 'Notify Slack on failure', name: 'FAILURE_NOTIFICATION_ENABLED'),
         booleanParam(defaultValue: false, description: 'Notify Slack on success', name: 'SUCCESS_NOTIFICATION_ENABLED'),
         booleanParam(defaultValue: true, description: 'Collect JUnit XML report', name: 'COLLECT_JUNIT_ENABLED')
+        text(defaultValue: '', description: 'E.g. FOO=BAR\nBAZ=WOT', name: 'EXTRA_PARAMS')
     ])
 ])
 

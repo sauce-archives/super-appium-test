@@ -20,6 +20,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SuperTest {
 	private static final Logger log = LoggerFactory.getLogger(SuperTest.class);
@@ -42,6 +44,8 @@ public class SuperTest {
 		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_SESSION_CREATION_RETRY);
 		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_SESSION_CREATION_TIMEOUT);
 		setOptionalCapability("automationName");
+		setOptionalCapability("tunnelId");
+		setExtraParams();
 
 		setRequiredCapability(TestObjectCapabilities.TESTOBJECT_API_KEY);
 		capabilities.setCapability("TESTOBJECT_UUID", UUID.randomUUID().toString());
@@ -49,6 +53,22 @@ public class SuperTest {
 		log.info("Initializing driver with DesiredCapabilities:\n" + capabilities + "\n");
 		driver = initDriver();
 		log.info("Driver initialized. Returned capabilities:\n" + driver.getCapabilities() + "\n");
+	}
+
+	private void setExtraParams() {
+		String paramString = System.getenv("EXTRA_PARAMS");
+		if (paramString == null || paramString.isEmpty()) {
+			return;
+		}
+
+		Pattern regex = Pattern.compile("(\\w+)=(\\w+)(\\\\n)?");
+		Matcher matcher = regex.matcher(paramString);
+		while (matcher.find()) {
+			String key = matcher.group(1);
+			String val = matcher.group(2);
+			log.info("Found EXTRA_PARAM " + key + "=" + val);
+			capabilities.setCapability(key, val);
+		}
 	}
 
 	private RemoteWebDriver initDriver() {
