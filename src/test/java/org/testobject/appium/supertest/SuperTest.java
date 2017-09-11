@@ -44,7 +44,7 @@ public class SuperTest {
 		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_SESSION_CREATION_RETRY);
 		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_SESSION_CREATION_TIMEOUT);
 		setOptionalCapability("automationName");
-		setOptionalCapability("tunnelId");
+		setOptionalCapability("tunnelIdentifier");
 		setExtraParams();
 
 		setRequiredCapability(TestObjectCapabilities.TESTOBJECT_API_KEY);
