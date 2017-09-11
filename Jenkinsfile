@@ -21,7 +21,7 @@ properties([
         booleanParam(defaultValue: false, description: '', name: 'TESTOBJECT_CACHE_DEVICE'),
         booleanParam(defaultValue: false, description: 'Notify Slack on failure', name: 'FAILURE_NOTIFICATION_ENABLED'),
         booleanParam(defaultValue: false, description: 'Notify Slack on success', name: 'SUCCESS_NOTIFICATION_ENABLED'),
-        booleanParam(defaultValue: true, description: 'Collect JUnit XML report', name: 'COLLECT_JUNIT_ENABLED')
+        booleanParam(defaultValue: true, description: 'Collect JUnit XML report', name: 'COLLECT_JUNIT_ENABLED'),
         text(defaultValue: '', description: 'E.g. FOO=BAR\nBAZ=WOT', name: 'EXTRA_PARAMS')
     ])
 ])
