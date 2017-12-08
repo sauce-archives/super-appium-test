@@ -10,6 +10,6 @@ TestRunner {
         archiveArtifacts "screenshot.png"
     }
     dockerImage = "java:8"
-    collectJunitReport = COLLECT_JUNIT_ENABLED.is(true)
+    collectJunitReport = COLLECT_JUNIT_ENABLED.is("true")
     junitReportPath = "/TEST-.xml"
 }
