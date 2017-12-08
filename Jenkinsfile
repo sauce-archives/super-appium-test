@@ -1,8 +1,9 @@
 #!groovy
 
 // for more information about TestRunner please visit https://github.com/saucelabs/pipeline-test-runner
-
 @Library('test-runner') _
+
+def collectReports = COLLECT_JUNIT_ENABLED.is("true")
 
 TestRunner {
     steps = {
@@ -10,6 +11,6 @@ TestRunner {
         archiveArtifacts "screenshot.png"
     }
     dockerImage = "java:8"
-    collectJunitReport = COLLECT_JUNIT_ENABLED.is("true")
+    collectJunitReport = collectReports
     junitReportPath = "/TEST-.xml"
 }
