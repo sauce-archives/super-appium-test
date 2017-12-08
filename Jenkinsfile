@@ -1,4 +1,5 @@
 #!groovy
+@Library('test-runner')
 
 TestRunner {
     steps = {
