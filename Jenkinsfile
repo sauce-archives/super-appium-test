@@ -13,5 +13,5 @@ TestRunner {
     }
     dockerImage = "java:8"
     collectJunitReport = collectReports
-    junitReportPath = "/TEST-.xml"
+    junitReportPath = "**/TEST-*.xml"
 }
