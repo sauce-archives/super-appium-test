@@ -1,6 +1,7 @@
 #!groovy
 
 // for more information about TestRunner please visit https://github.com/saucelabs/pipeline-test-runner
+
 @Library('test-runner') _
 
 def collectReports = COLLECT_JUNIT_ENABLED.is("true")
