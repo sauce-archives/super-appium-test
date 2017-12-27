@@ -61,7 +61,7 @@ public class SuperTest {
 			return;
 		}
 
-		Pattern regex = Pattern.compile("(\\w+)=\"?(\\w+)\"?(\\\\n)?");
+		Pattern regex = Pattern.compile("(\\w+)=\"?(\\S+)\"?(\\\\n)?");
 		Matcher matcher = regex.matcher(paramString);
 		while (matcher.find()) {
 			String key = matcher.group(1);
