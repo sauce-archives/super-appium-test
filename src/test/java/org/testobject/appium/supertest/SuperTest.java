@@ -46,6 +46,7 @@ public class SuperTest {
 		setOptionalCapability("automationName");
 		setOptionalCapability("tunnelIdentifier");
 		setOptionalCapability("app");
+		setOptionalCapability("carrierConnectivityOnly");
 		setExtraParams();
 
 		setRequiredCapability(TestObjectCapabilities.TESTOBJECT_API_KEY);
