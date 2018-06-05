@@ -31,25 +31,25 @@ public class SuperTest {
 
 	@Before
     public void setUp() {
-		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_DEVICE);
-		setOptionalCapability("TESTOBJECT_PLATFORM_NAME");
-		setOptionalCapability("TESTOBJECT_PLATFORM_VERSION");
-		setOptionalCapability("TESTOBJECT_TABLET_ONLY");
-		setOptionalCapability("TESTOBJECT_PHONE_ONLY");
-		setOptionalCapability("TESTOBJECT_POOL_ID");
-		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_TEST_NAME);
-		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_APPIUM_VERSION);
-		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_CACHE_DEVICE);
-		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_APP_ID);
-		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_SESSION_CREATION_RETRY);
-		setOptionalCapability(TestObjectCapabilities.TESTOBJECT_SESSION_CREATION_TIMEOUT);
-		setOptionalCapability("automationName");
-		setOptionalCapability("tunnelIdentifier");
-		setOptionalCapability("app");
-		setOptionalCapability("carrierConnectivityOnly");
+		setCapability(TestObjectCapabilities.TESTOBJECT_DEVICE);
+		setCapability("TESTOBJECT_PLATFORM_NAME");
+		setCapability("TESTOBJECT_PLATFORM_VERSION");
+		setCapability("TESTOBJECT_TABLET_ONLY");
+		setCapability("TESTOBJECT_PHONE_ONLY");
+		setCapability("TESTOBJECT_POOL_ID");
+		setCapability(TestObjectCapabilities.TESTOBJECT_TEST_NAME);
+		setCapability(TestObjectCapabilities.TESTOBJECT_APPIUM_VERSION);
+		setCapability(TestObjectCapabilities.TESTOBJECT_CACHE_DEVICE);
+		setCapability(TestObjectCapabilities.TESTOBJECT_APP_ID);
+		setCapability(TestObjectCapabilities.TESTOBJECT_SESSION_CREATION_RETRY);
+		setCapability(TestObjectCapabilities.TESTOBJECT_SESSION_CREATION_TIMEOUT);
+		setCapability("automationName");
+		setCapability("tunnelIdentifier");
+		setCapability("app");
+		setCapability("carrierConnectivityOnly");
+		setCapability(TestObjectCapabilities.TESTOBJECT_API_KEY);
 		setExtraParams();
 
-		setRequiredCapability(TestObjectCapabilities.TESTOBJECT_API_KEY);
 		capabilities.setCapability("TESTOBJECT_UUID", UUID.randomUUID().toString());
 
 		log.info("Initializing driver with DesiredCapabilities:\n" + capabilities + "\n");
@@ -90,15 +90,6 @@ public class SuperTest {
 		}
 	}
 
-	private void setRequiredCapability(String var) {
-		String data = System.getenv(var.toUpperCase());
-		if (data == null || data.isEmpty()) {
-			throw new RuntimeException("Missing required environment variable " + var);
-		} else {
-			capabilities.setCapability(var, data);
-		}
-	}
-
 	private URL getAppiumServer() {
 		String url = System.getenv("APPIUM_URL");
 		if (url == null || url.isEmpty()) {
@@ -112,7 +103,7 @@ public class SuperTest {
 		}
 	}
 
-	private void setOptionalCapability(String var) {
+	private void setCapability(String var) {
 		Optional.ofNullable(System.getenv(var.toUpperCase()))
 				.filter(env -> !env.isEmpty())
 				.ifPresent(data -> capabilities.setCapability(var, data));
