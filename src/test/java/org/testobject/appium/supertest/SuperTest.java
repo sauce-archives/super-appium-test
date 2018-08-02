@@ -52,7 +52,7 @@ public class SuperTest {
 
 		capabilities.setCapability("TESTOBJECT_UUID", UUID.randomUUID().toString());
 
-		log.info("Initializing driver with DesiredCapabilities:\n" + capabilities + "\n");
+		log.info("Initializing driver with DesiredCapabilities against " + getAppiumServer() + ":\n" + capabilities + "\n");
 		driver = initDriver();
 		log.info("Driver initialized. Returned capabilities:\n" + driver.getCapabilities() + "\n");
 	}
@@ -112,6 +112,7 @@ public class SuperTest {
 	@Test
     public void superTest() throws IOException, InterruptedException {
 		Thread.sleep(1000);
+
 		log.info(driver.getPageSource());
 		byte[] screenshot = driver.getScreenshotAs(OutputType.BYTES);
 		Path screenshotPath = Paths.get("screenshot.png");
