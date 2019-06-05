@@ -6,8 +6,9 @@ repositories {
 
 dependencies {
     testCompile 'junit:junit:4.12'
-    testCompile 'org.seleniumhq.selenium:selenium-remote-driver:3.13.0'
+    testCompile 'org.seleniumhq.selenium:selenium-remote-driver:3.141.59'
     testCompile 'org.testobject:testobject-appium-java-api:0.2.7'
     testCompile 'ch.qos.logback:logback-classic:1.2.3'
+    testCompile group: 'io.appium', name: 'java-client', version: '7.0.0'
 }
 
